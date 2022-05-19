@@ -62,18 +62,59 @@
 //  *********
 // ***********
 
-const lines = 5;
-let result = '';
-// Проверяется именно переменная result, формируйте строку в ней
+// const lines = 5;
+// let result = '';
+// // Проверяется именно переменная result, формируйте строку в ней
+//
+// for (let i = 0; i <= lines; i++) {
+//     for (let j = 0; j < lines - i; j++){
+//         result += ' ';
+//     }
+//     for (let j = 0; j < 2 * i + 1; j++){
+//         result += '*';
+//     }
+//     result += '\n';
+// }
+//
+// console.log(result);
 
-for (let i = 0; i <= lines; i++) {
-    for (let j = 0; j < lines - i; j++){
-        result += ' ';
+// Место для первой задачи
+// function sayHello(name) {
+//     return 'Привет, +  name!'; <== не верно
+//     return `Привет, + ${name}!`; <== Верно
+// }
+// sayHello('Антон');
+
+// Место для второй задачи
+// function returnNeighboringNumbers(number) {
+//     return [number - 1, number, number + 1]; // так короче и правильнее!!!
+/* let arr = [];
+const a = number - 1;
+const b = number;
+const c = number + 1;
+arr[0] = a;
+arr[1] = b;
+arr[2] = c;
+return arr; */ // Так тоже верно, но не правильно.
+// }
+// returnNeighboringNumbers(5);
+
+// Место для третьей задачи
+function getMathResult(num, times) {
+    if (typeof(times) !== 'number' || times <= 0){
+        return num;
     }
-    for (let j = 0; j < 2 * i + 1; j++){
-        result += '*';
+
+    let str = '';
+
+    for (let i = 1; i <= times; i++){
+        if (i === times){
+            str += `${num * i}`;
+        } else {
+            str += `${num * i}---`;
+        }
     }
-    result += '\n';
+    return str;
 }
+getMathResult(3, 10);
 
-console.log(result);
