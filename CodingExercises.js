@@ -100,21 +100,127 @@ return arr; */ // Так тоже верно, но не правильно.
 // returnNeighboringNumbers(5);
 
 // Место для третьей задачи
-function getMathResult(num, times) {
-    if (typeof(times) !== 'number' || times <= 0){
-        return num;
-    }
+// function getMathResult(num, times) {
+//     if (typeof(times) !== 'number' || times <= 0){
+//         return num;
+//     }
+//
+//     let str = '';
+//
+//     for (let i = 1; i <= times; i++){
+//         if (i === times){
+//             str += `${num * i}`;
+//         } else {
+//             str += `${num * i}---`;
+//         }
+//     }
+//     return str;
+// }
+// getMathResult(3, 10);
 
-    let str = '';
+// Место для первой задачи
+// function calculateVolumeAndArea(length) {
+//     if (typeof (length) !== 'number' || length <= 0 || !Number.isInteger(length)){
+//         return "При вычислении произошла ошибка";
+//     }
+//
+//     let volume = length * length * length;
+//
+//     let area = 6 * (length * length);
+//     return `Обьем куба: ${volume}, площадь всей поверхности: ${area}`;
+// }
+//
+// calculateVolumeAndArea(5);
 
-    for (let i = 1; i <= times; i++){
-        if (i === times){
-            str += `${num * i}`;
-        } else {
-            str += `${num * i}---`;
-        }
-    }
-    return str;
-}
-getMathResult(3, 10);
+// Место для второй задачи
+// function getCoupeNumber(seatNumber) {
+// //     if (typeof(seatNumber) !== 'number' || seatNumber < 0 || !Number.isInteger(seatNumber)){
+// //         return "Ошибка. Проверьте правильность введенного номера места";
+// //     }
+// //     if (seatNumber === 0 || seatNumber > 36){
+// //         return "Таких мест в вагоне не существует";
+// //     }
+// //     for (let i = 4; i <= 36; i = i + 4){
+// //         if (seatNumber <= i){
+// //             console.log(Math.ceil(i / 4));
+// //             return Math.ceil(i / 4);
+// //         }
+// //     }
+// // }
+// // getCoupeNumber(1);
+
+// Место для первой задачи
+// function getTimeFromMinutes(minutesTotal) {
+//     if (typeof (minutesTotal) !== 'number' || minutesTotal < 0 || !Number.isInteger(minutesTotal)){
+//         return  "Ошибка, проверьте данные";
+//     }
+//
+//     const hours = Math.floor(minutesTotal / 60);
+//     const minutes = minutesTotal % 60;
+//
+//     let hoursStr = '';
+//
+//     switch (hours) {
+//         case 0:
+//             hoursStr = 'часов';
+//             break;
+//         case 1:
+//             hoursStr = 'час';
+//             break;
+//         case 2:
+//         case 3:
+//         case 4:
+//             hoursStr = 'часа';
+//             break;
+//         default:
+//             hoursStr = 'часов';
+//     }
+//     // console.log(hours);
+//     // console.log(minutes);
+//     // console.log(`Это ${hours} ${hoursStr} и ${minutes} минут`);
+//     return `Это ${hours} ${hoursStr} и ${minutes} минут`;
+// }
+//
+// getTimeFromMinutes(150);
+
+
+// function findMaxNumber(a, b ,c, d) {
+//     // Самое простое - это использовать Math.max :)
+//     // А оптимизировать такую проверку мы научимся совсем скоро
+//     if (typeof(a) !== 'number' ||
+//         typeof(b) !== 'number' ||
+//         typeof(c) !== 'number' ||
+//         typeof(d) !== 'number') {
+//         return 0;
+//     } else {
+//         return Math.max(a, b ,c, d);
+//     }
+// }
+//
+// findMaxNumber(1, 5, 6.6, 10.5);
+// findMaxNumber(1, 5, '6', '10');
+
+// Задача на числа Фибанначи
+// function fib(num) {
+//     if (typeof (num) !== "number" || !Number.isInteger(num) || num <= 0){
+//         return '';
+//     }
+//     let result = '';
+//     let a = 0;
+//     let b = 1;
+//     for (let i = 0; i < num; i++){
+//         if (i + 1 === num) {
+//             result += `${a}`;
+//         } else {
+//             result += `${a} `;
+//         }
+//         let c = a + b;
+//         a = b;
+//         b = c;
+//     }
+//     // console.log(result);
+//     return result;
+// }
+//
+// fib(4);
 
