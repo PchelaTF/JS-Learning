@@ -321,7 +321,7 @@ function reverse(str) {
 reverse(someString); */
 
 // задача про банкоматы
-const baseCurrencies = ['USD', 'EUR'];
+/* const baseCurrencies = ['USD', 'EUR'];
 const additionalCurrencies = ['UAH', 'RUB', 'CNY'];
 
 function availableCurr(arr, missingCurr) {
@@ -350,4 +350,5 @@ function availableCurr(arr, missingCurr) {
     return str;
 }
 
-availableCurr([...baseCurrencies, ...additionalCurrencies], 'CNY');
+availableCurr([...baseCurrencies, ...additionalCurrencies], 'CNY'); */
+
