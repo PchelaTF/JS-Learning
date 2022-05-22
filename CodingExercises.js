@@ -224,3 +224,130 @@ return arr; */ // Так тоже верно, но не правильно.
 //
 // fib(4);
 
+// Работа с Обьектами
+/* const personalPlanPeter = {
+    name: "Peter",
+    age: "29",
+    skills: {
+        languages: ['ru', 'eng'],
+        programmingLangs: {
+            js: '20%',
+            php: '10%'
+        },
+        exp: '1 month'
+    },
+    showAgeAndLang: function (plan) {
+        const {age} = plan;
+        const {languages} = plan.skills;
+        let str = `Мне ${age} и я владею языками: `;
+
+        languages.forEach(function (lang){
+            str += `${lang.toUpperCase()} `;
+        });
+
+        console.log(str);
+        return str;
+    }
+};
+
+personalPlanPeter.showAgeAndLang(personalPlanPeter);
+
+function showExperience(plan) {
+    const {exp} = plan.skills;
+    console.log(`${exp}`);
+    return  `${exp}`;
+}
+showExperience(personalPlanPeter);
+
+function showProgrammingLangs(plan) {
+    let str = '';
+    const {programmingLangs} = plan.skills;
+    for (let key in programmingLangs){
+        str += `Язык ${key} изучен на ${programmingLangs[key]}\n`;
+    }
+    console.log(str);
+    return str;
+}
+showProgrammingLangs(personalPlanPeter);
+*/
+
+// Работа с массивами
+/* const family = ['Peter', 'Ann', 'Alex', 'Linda'];
+
+function showFamily(arr) {
+    let str = '';
+
+    if (arr.length <= 0){
+        str += 'Семья пуста';
+    } else {
+        str += 'Семья состоит из: ';
+    }
+    arr.forEach(member => {
+        str += `${member} `;
+    });
+    console.log(str);
+    return str;
+}
+showFamily(family);
+
+const favoriteCities = ['liSBon', 'ROME', 'miLan', 'Dublin'];
+
+function standardizeStrings(arr) {
+    arr.forEach(city => {
+        console.log(city.toLowerCase());
+    })
+}
+
+standardizeStrings(favoriteCities);
+*/
+
+// Задача на разворот строки
+/*const someString = 'This is some strange string';
+
+function reverse(str) {
+    if (typeof (str) !== "string"){
+        return 'Ошибка';
+    } else {
+        const arr = str.split('');
+        console.log(arr)
+        const reversed = arr.reverse();
+        console.log(reversed);
+        const string = reversed.join('');
+        console.log(string);
+        return string;
+    }
+}
+
+reverse(someString); */
+
+// задача про банкоматы
+const baseCurrencies = ['USD', 'EUR'];
+const additionalCurrencies = ['UAH', 'RUB', 'CNY'];
+
+function availableCurr(arr, missingCurr) {
+    let str = '';
+    if (arr.length === 0){
+        str = 'Нет доступных валют';
+        console.log(str);
+        return str;
+    } else {
+        str = 'Доступные валюты:\n';
+        arr.forEach(function (curr, i){
+            if (curr !== missingCurr){
+                str += `${curr}\n`;
+            }
+        });x
+    }
+
+    // или
+    // for (let i = 0; i < arr.length; i++){
+    //     if (arr[i] === missingCurr){
+    //         continue;
+    //     }
+    //     str += `${arr[i]}\n`;
+    // }
+    console.log(str);
+    return str;
+}
+
+availableCurr([...baseCurrencies, ...additionalCurrencies], 'CNY');
