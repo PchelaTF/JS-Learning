@@ -352,3 +352,76 @@ function availableCurr(arr, missingCurr) {
 
 availableCurr([...baseCurrencies, ...additionalCurrencies], 'CNY'); */
 
+// Продвинутая задача на работу с обьектами и массивами
+/* const shoppingMallData = {
+    shops: [
+        {
+            width: 10,
+            length: 5
+        },
+        {
+            width: 15,
+            length: 7
+        },
+        {
+            width: 20,
+            length: 5
+        },
+        {
+            width: 8,
+            length: 10
+        }
+    ],
+    height: 5,
+    moneyPer1m3: 30,
+    budget: 50000
+}
+
+function isBudgetEnough(data) {
+    let square = 0;
+    let volume = 0;
+
+    data.shops.forEach(shops => {
+        square += shops.width * shops.length;
+    });
+
+    volume += square * data.height;
+
+    if (data.budget - (volume * data.moneyPer1m3) >= 0){
+        console.log('Бюджета достаточно');
+        return 'Бюджета достаточно';
+    } else {
+        console.log('Бюджета недостаточно');
+        return 'Бюджета недостаточно';
+    }
+}
+
+isBudgetEnough(shoppingMallData); */
+
+
+// Продвинутая задача на работу с обьектами и массивами
+
+const students = ['Peter', 'Andrew', 'Ann', 'Mark', 'Josh', 'Sandra', 'Cris', 'Bernard', 'Takesi', 'Sam'];
+
+function sortStudentsByGroups(arr) {arr.sort();
+    let team1 = [];
+    let team2 = [];
+    let team3 = [];
+    let teamRest = [];
+    // let str = arr.join(' '); можно и без этого
+    for (let i = 0; i < arr.length; i++) {
+        if (i < 3) {
+            team1.push(arr[i]);
+        } else if (i < 6) {
+            team2.push(arr[i]);
+        } else if (i < 9) {
+            team3.push(arr[i]);
+        } else {
+            teamRest.push(arr[i]);
+        }
+    }
+    console.log([team1, team2, team3, `Оставшиеся студенты: ${teamRest.length === 0 ? '-' : teamRest.join(', ')}`]);
+    return [team1, team2, team3, `Оставшиеся студенты: ${teamRest.length === 0 ? '-' : teamRest.join(', ')}`];
+}
+
+sortStudentsByGroups(students);
