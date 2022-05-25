@@ -401,7 +401,7 @@ isBudgetEnough(shoppingMallData); */
 
 // Продвинутая задача на работу с обьектами и массивами
 
-const students = ['Peter', 'Andrew', 'Ann', 'Mark', 'Josh', 'Sandra', 'Cris', 'Bernard', 'Takesi', 'Sam'];
+/* const students = ['Peter', 'Andrew', 'Ann', 'Mark', 'Josh', 'Sandra', 'Cris', 'Bernard', 'Takesi', 'Sam'];
 
 function sortStudentsByGroups(arr) {arr.sort();
     let team1 = [];
@@ -424,4 +424,101 @@ function sortStudentsByGroups(arr) {arr.sort();
     return [team1, team2, team3, `Оставшиеся студенты: ${teamRest.length === 0 ? '-' : teamRest.join(', ')}`];
 }
 
-sortStudentsByGroups(students);
+sortStudentsByGroups(students); */
+
+// Задача на поиск ошибок в коде
+
+const restorantData = {
+    menu: [
+        {
+            name: 'Salad Caesar',
+            price: '14$'
+        },
+        {
+            name: 'Pizza Diavola',
+            price: '9$'
+        },
+        {
+            name: 'Beefsteak',
+            price: '17$'
+        },
+        {
+            name: 'Napoleon',
+            price: '7$'
+        }
+    ],
+    waitors: [
+        {name: 'Alice', age: 22}, {name: 'John', age: 24}
+    ],
+    averageLunchPrice: '20$',
+    openNow: true
+};
+
+// Как было
+// function isOpen(prop) {
+//     let answer = '';
+//     prop ? answer = 'Закрыто' : answer = 'Открыто';
+//
+//     return anwser;
+// }
+//
+// console.log(isOpen(openNow))
+
+// Как стало
+function isOpen(prop) {
+    let answer = '';
+    (prop === false) ? answer = 'Закрыто' : answer = 'Открыто';
+
+    return answer;
+}
+
+console.log(isOpen(restorantData.openNow))
+
+// Было
+// function isAverageLunchPriceTrue(fDish, sDish, average) {
+//     if (+fDish.price.slice(0, -1) + (sDish.price) < average) {
+//         return 'Цена ниже средней';
+//     } else {
+//         return 'Цена выше средней';
+//     }
+// }
+//
+// console.log(isAverageLunchPriceTrue(restorantData.menu[0], restorantData.menu[1], restorantData.averageLunchPrice));
+
+// Стало
+function isAverageLunchPriceTrue(fDish, sDish, average) {
+    if (+fDish.price.slice(0, -1) + (+sDish.price.slice(0, -1)) < +average.slice(0, -1)) {
+        return 'Цена ниже средней';
+    } else {
+        return 'Цена выше средней';
+    }
+}
+
+console.log(isAverageLunchPriceTrue(restorantData.menu[0], restorantData.menu[1], restorantData.averageLunchPrice));
+
+// Было
+// function transferWaitors(data) {
+//     const copy = Object.assign({}, data);
+//
+//     copy.waitors[0] = {name: 'Mike', age: 32};
+//     return copy;
+// }
+//
+// transferWaitors(restorantData);
+
+// Стало
+function transferWaitors(data) {
+    const copy = Object.assign({}, data);
+
+    // Нам просто нужно менять весь массив данных,
+    // а не лезть напрямую менять каждого из сотрудников
+    // Так как это верхний уровень объекта, то значение
+    // будет меняться только у копии
+    copy.waitors = [{name: 'Mike', age: 32}];
+    console.log(copy);
+    return copy;
+}
+
+transferWaitors(restorantData);
+
+console.log(restorantData);
