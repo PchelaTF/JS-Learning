@@ -428,7 +428,7 @@ sortStudentsByGroups(students); */
 
 // Задача на поиск ошибок в коде
 
-const restorantData = {
+/*const restorantData = {
     menu: [
         {
             name: 'Salad Caesar',
@@ -521,4 +521,25 @@ function transferWaitors(data) {
 
 transferWaitors(restorantData);
 
-console.log(restorantData);
+console.log(restorantData); */
+
+// Задача на рекурсию
+// Напишите функцию, которая вычесляет факториал
+
+function factorial(num) {
+    if (typeof(num) !== 'number' || !Number.isInteger(num)) {
+        return 'Введите целое число';
+    }
+
+    if (num <= 0) {
+        return 1;
+    }
+
+    if (num === 1) {
+        return num;
+    } else {
+        return num * factorial(num - 1);
+    }
+}
+
+console.log(factorial(5));
