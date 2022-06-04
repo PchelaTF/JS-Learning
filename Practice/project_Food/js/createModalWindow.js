@@ -13,15 +13,18 @@ window.addEventListener('DOMContentLoaded', () => {
     // });
 
     modalTrigger.forEach(item => {
-        item.addEventListener('click', () => {
-            // modal.classList.add('show');
-            // modal.classList.remove('hide');
+        // item.addEventListener('click', () => {
+        //     // modal.classList.add('show');
+        //     // modal.classList.remove('hide');
 
-            // через toggle
-            modal.classList.toggle('show');
+        //     // через toggle
+        //     // modal.classList.toggle('show');
 
-            document.body.style.overflow = 'hidden';
-        });
+        //     // document.body.style.overflow = 'hidden';
+
+        //     openModal();
+        item.addEventListener('click', openModal);
+        // });
     });
 
     // modalCloseBtn.addEventListener('click', () => {
@@ -36,6 +39,12 @@ window.addEventListener('DOMContentLoaded', () => {
 
     // Do not repeat yor self 
     // если код повторяется, лучше всего использовать функции
+
+    function openModal() {
+        modal.classList.toggle('show');
+        document.body.style.overflow = 'hidden';
+        clearInterval(modalTimerId);
+    }
 
     function closeModal() {
         modal.classList.toggle('show');
@@ -60,4 +69,23 @@ window.addEventListener('DOMContentLoaded', () => {
             closeModal();
         }
     });
+
+    // установим через которое модальное окно будет показыватся на сайте 
+    // для этого сделаем функцию открытия модального окна строка 43
+    const modalTimerId = setTimeout(openModal, 20000);
+
+    // делаем что бы при пролистывании страницы до конца выскакиволо модальное окно
+    function showModalByScroll() {
+        if (window.pageYOffset + document.documentElement.clientHeight >= document.documentElement.scrollHeight - 1) {
+            openModal();
+            window.removeEventListener('scroll', showModalByScroll);
+        }
+    }
+    // window.addEventListener('scroll', () => {
+    //     if (window.pageYOffset + document.documentElement.clientHeight >= document.documentElement.scrollHeight - 1) {
+    //         openModal();
+    //     }
+    // });
+
+    window.addEventListener('scroll', showModalByScroll);
 });
