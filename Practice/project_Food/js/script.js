@@ -315,14 +315,15 @@ window.addEventListener('DOMContentLoaded', () => {
             // будем использовать более гибкую команду для вставки statusMessage 
             form.insertAdjacentElement('afterend', statusMessage);
 
-            const request = new XMLHttpRequest();
-            request.open('POST', 'server.php');
+            // ? заменим XMLHttpRequest на Fetch();
+            // const request = new XMLHttpRequest();
+            // request.open('POST', 'server.php');
 
             // request.setRequestHeader('Content-type', 'multipart/form-data');
             // ! при использовании связки XMLHttpRequest + form-data заголовок ставанавливать не нужно, он устанавливается автоматически
 
             // формат JSON
-            request.setRequestHeader('Content-type', 'applecation/json');
+            // request.setRequestHeader('Content-type', 'applecation/json');
 
             const formData = new FormData(form);
 
@@ -331,31 +332,51 @@ window.addEventListener('DOMContentLoaded', () => {
                 object[key] = value;
             });
 
-            const json = JSON.stringify(object);
+            // const json = JSON.stringify(object);
 
             // request.send(formData);
-            request.send(json);
+            // request.send(json);
 
-            request.addEventListener('load', () => {
-                if (request.status === 200) {
-                    console.log(request.response);
-                    // statusMessage.textContent = message.sucsess;
+            // request.addEventListener('load', () => {
+            //     if (request.status === 200) {
+            //         console.log(request.response);
+            //         // statusMessage.textContent = message.sucsess;
 
+            //         showThanksModal(message.sucsess);
+
+            //         // очистка формы 
+            //         form.reset();
+
+            //         // убираем сообщение об "успехе"
+            //         // setTimeout(() => {
+            //         //     statusMessage.remove();
+            //         // }, 2000);
+            //         statusMessage.remove();
+            //     } else {
+            //         // statusMessage.textContent = message.failure;
+            //         showThanksModal(message.failure);
+            //     }
+            // });
+
+            // ? заменим XMLHttpRequest на Fetch();
+            fetch('server1.php', {
+                method: 'POST',
+                headers: {
+                    'Content-type': 'applecation/json'
+                },
+                // body: formData
+                body: JSON.stringify(object)
+            }).then(data => data.text())
+                .then(data => {
+                    console.log(data);
                     showThanksModal(message.sucsess);
-
-                    // очистка формы 
-                    form.reset();
-
-                    // убираем сообщение об "успехе"
-                    // setTimeout(() => {
-                    //     statusMessage.remove();
-                    // }, 2000);
                     statusMessage.remove();
-                } else {
-                    // statusMessage.textContent = message.failure;
+                }).catch(() => {
                     showThanksModal(message.failure);
-                }
-            });
+                }).finally(() => {
+                    form.reset();
+                });
+
         });
     }
 
