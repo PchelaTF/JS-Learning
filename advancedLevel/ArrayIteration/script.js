@@ -23,11 +23,11 @@ const result = answers.map(item => item.toLocaleLowerCase());
 
 // ? лучше создавать новую переменную, т.е. делать как выше, а не так как ниже)
 
-let answers = ['IvAn', 'AnnA', 'HelLo'];
+// let answers = ['IvAn', 'AnnA', 'HelLo'];
 
-answers = answers.map(item => item.toLocaleLowerCase());
+// answers = answers.map(item => item.toLocaleLowerCase());
 
-console.log(result);
+// console.log(result);
 
 
 // * every/some
@@ -46,11 +46,11 @@ console.log(some.every(item => typeof (item) === 'number'));
 // Метод reduce() применяет функцию reducer к каждому элементу массива (слева-направо), возвращая одно результирующее значение.
 
 const arr = [4, 5, 1, 3, 2, 6];
-                        // 0       4
-                        // 4       5
-                        // 9       1
-                        // 10      3
-                        // ...
+// 0       4
+// 4       5
+// 9       1
+// 10      3
+// ...
 const res = arr.reduce((sum, current) => sum + current, 3); // 3 это начальное значение 
 
 console.log(res);
@@ -71,12 +71,12 @@ const obj = {
 
 // делаем из обьекта массив массивов
 const newArr = Object.entries(obj)
-// фильтруем массив согласно условию
-.filter(item => item[1] === 'persone')
-// возвращаем только имена 
-.map(item => item[0]);
+    // фильтруем массив согласно условию
+    .filter(item => item[1] === 'persone')
+    // возвращаем только имена 
+    .map(item => item[0]);
 
-console.log(newArr); 
+console.log(newArr);
 
 // * Object.entries()
 // Object.entries() метод возвращает массив собственных перечисляемых свойств указанного объекта в формате [key, value], в том же порядке, что и в цикле for...in (разница в том, что for-in перечисляет свойства из цепочки прототипов). Порядок элементов в массиве который возвращается Object.entries() не зависит от того как объект объявлен. Если существует необходимость в определённом порядке, то  массив должен быть отсортирован до вызова метода, например Object.entries(obj).sort((a, b) => a[0] - b[0]);.
