@@ -359,7 +359,7 @@ window.addEventListener('DOMContentLoaded', () => {
             // });
 
             // ? заменим XMLHttpRequest на Fetch();
-            fetch('server1.php', {
+            fetch('server.php', {
                 method: 'POST',
                 headers: {
                     'Content-type': 'applecation/json'
