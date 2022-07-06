@@ -527,9 +527,13 @@ console.log(restorantData); */
 // Напишите функцию, которая вычесляет факториал
 
 function factorial(num) {
-    if (typeof(num) !== 'number' || !Number.isInteger(num)) {
-        return 'Введите целое число';
-    }
+    // if (/*typeof(num) !== 'number' ||*/ !Number.isInteger(num)) {
+    //     return 'Введите целое число';
+    // }
+
+    if (typeof (num) !== 'number') return 'Это не число';
+
+    if (!Number.isInteger(num)) return 'Это число, но не целое';
 
     if (num <= 0) {
         return 1;
@@ -542,4 +546,4 @@ function factorial(num) {
     }
 }
 
-console.log(factorial(5));
+console.log(factorial('5.7'));
