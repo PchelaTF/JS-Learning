@@ -554,11 +554,15 @@ window.addEventListener('DOMContentLoaded', () => {
         slide.style.width = width;
     });
 
+    function widthReplaceDeleteNotDigits(str) {
+        return +str.replace(/\D/g, '')
+    }
+
     next.addEventListener('click', () => {
-        if (offset == +width.slice(0, width.length - 2) * (slides.length - 1)) {
+        if (offset == widthReplaceDeleteNotDigits(width) * (slides.length - 1)) {
             offset = 0;
         } else {
-            offset += +width.slice(0, width.length - 2);
+            offset += widthReplaceDeleteNotDigits(width);
         }
 
         slidesFild.style.transform = `translateX(-${offset}px)`;
@@ -581,9 +585,9 @@ window.addEventListener('DOMContentLoaded', () => {
 
     prev.addEventListener('click', () => {
         if (offset == 0) {
-            offset = +width.slice(0, width.length - 2) * (slides.length - 1);
+            offset = widthReplaceDeleteNotDigits(width) * (slides.length - 1);
         } else {
-            offset -= +width.slice(0, width.length - 2);
+            offset -= widthReplaceDeleteNotDigits(width);
         }
 
         slidesFild.style.transform = `translateX(-${offset}px)`;
@@ -635,7 +639,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
             slidesIndex = slideTo;
 
-            offset = +width.slice(0, width.length - 2) * (slideTo - 1);
+            offset = /*+width.slice(0, width.length - 2)*/ +width.replace(/\D/g, '') * (slideTo - 1);
 
             slidesFild.style.transform = `translateX(-${offset}px)`;
 
