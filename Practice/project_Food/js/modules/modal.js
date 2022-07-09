@@ -1,9 +1,29 @@
 "use strict";
 
-window.addEventListener('DOMContentLoaded', () => {
+function openModal(modalSelector, modalTimerId) {
+    const modal = document.querySelector(modalSelector);
 
-    const modalTrigger = document.querySelectorAll('[data-modal]'),
-        modal = document.querySelector('.modal');
+    modal.classList.add('show');
+    modal.classList.remove('hide');
+    document.body.style.overflow = 'hidden';
+
+    if (modalTimerId) {
+        clearInterval(modalTimerId);
+    }
+}
+
+function closeModal(modalSelector) {
+    const modal = document.querySelector(modalSelector);
+
+    modal.classList.add('hide');
+    modal.classList.remove('show');
+    document.body.style.overflow = '';
+}
+
+function modal(triggerSelector, modalSelector) {
+
+    const modalTrigger = document.querySelectorAll(triggerSelector),
+        modal = document.querySelector(modalSelector);
     // modalCloseBtn = document.querySelector('[data-close]'); // сделаем что бы можно было использовать динамические файлы 
 
     // modalTrigger.addEventListener('click', () => {
@@ -23,7 +43,7 @@ window.addEventListener('DOMContentLoaded', () => {
         //     // document.body.style.overflow = 'hidden';
 
         //     openModal();
-        item.addEventListener('click', openModal);
+        item.addEventListener('click', () => openModal(modalSelector));
         // });
     });
 
@@ -40,16 +60,8 @@ window.addEventListener('DOMContentLoaded', () => {
     // Do not repeat yor self 
     // если код повторяется, лучше всего использовать функции
 
-    function openModal() {
-        modal.classList.toggle('show');
-        document.body.style.overflow = 'hidden';
-        clearInterval(modalTimerId);
-    }
+    // !
 
-    function closeModal() {
-        modal.classList.toggle('show');
-        document.body.style.overflow = '';
-    }
 
     // modalCloseBtn.addEventListener('click', closeModal); // сделаем что бы можно было использовать динамические файлы 
 
@@ -59,7 +71,7 @@ window.addEventListener('DOMContentLoaded', () => {
             // modal.classList.toggle('show');
             // document.body.style.overflow = '';
 
-            closeModal();
+            closeModal(modalSelector);
         }
     });
 
@@ -67,18 +79,14 @@ window.addEventListener('DOMContentLoaded', () => {
     // && только при открытом модальном окне 
     document.addEventListener('keydown', (e) => {
         if (e.code === 'Escape' && modal.classList.contains('show')) {
-            closeModal();
+            closeModal(modalSelector);
         }
     });
-
-    // установим через которое модальное окно будет показыватся на сайте 
-    // для этого сделаем функцию открытия модального окна строка 43
-    const modalTimerId = setTimeout(openModal, 20000);
 
     // делаем что бы при пролистывании страницы до конца выскакиволо модальное окно
     function showModalByScroll() {
         if (window.pageYOffset + document.documentElement.clientHeight >= document.documentElement.scrollHeight - 1) {
-            openModal();
+            openModal(modalSelector);
             window.removeEventListener('scroll', showModalByScroll);
         }
     }
@@ -89,4 +97,8 @@ window.addEventListener('DOMContentLoaded', () => {
     // });
 
     window.addEventListener('scroll', showModalByScroll);
-});
+
+}
+
+export default modal;
+export { openModal, closeModal };

@@ -1,9 +1,8 @@
 "use strict";
 
-window.addEventListener('DOMContentLoaded', () => {
-
-    // const deadline = '2022-07-02';
-    const deadline = '2022-05-02';
+function timer(id, deadline) {
+    // const deadline = '2022-08-02';
+    // const deadline = '2022-05-02';
 
     function getTimeRemaining(endtime) {
 
@@ -63,5 +62,7 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    setClock('.timer', deadline);
-});
+    setClock(id, deadline);
+}
+
+export default timer;
