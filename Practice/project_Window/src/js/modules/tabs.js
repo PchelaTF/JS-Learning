@@ -5,20 +5,25 @@ export const tabs = (options) => {
 
     function hideTabsContent() {
         tab.forEach(item => item.classList.remove(options.activeClass));
+
         tab.forEach(item => item.parentNode.classList.remove(options.activeClass));
+
         content.forEach(item => item.style.display = 'none');
     }
 
     function showTabsContant(i = 0) {
         tab[i].classList.add(options.activeClass);
+
         tab[i].parentNode.classList.add(options.activeClass);
-        content[i].style.display = 'block';
+
+        content[i].style.display = options.display;
     }
 
     hideTabsContent();
     showTabsContant();
 
     header.addEventListener('click', e => {
+
         const target = e.target;
 
         // if (target &&
