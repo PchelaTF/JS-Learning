@@ -14844,19 +14844,33 @@ module.exports = g;
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _modules_popup__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/popup */ "./src/js/modules/popup.js");
-/* harmony import */ var _slider__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./slider */ "./src/js/slider.js");
+/* harmony import */ var _modules_modal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/modal */ "./src/js/modules/modal.js");
+/* harmony import */ var _modules_tabs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/tabs */ "./src/js/modules/tabs.js");
+/* harmony import */ var _slider__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./slider */ "./src/js/slider.js");
+
 
 
 window.addEventListener('DOMContentLoaded', function () {
-  Object(_modules_popup__WEBPACK_IMPORTED_MODULE_0__["modal"])();
+  Object(_modules_modal__WEBPACK_IMPORTED_MODULE_0__["modal"])();
+  var glazingTabs = Object(_modules_tabs__WEBPACK_IMPORTED_MODULE_1__["tabs"])({
+    header: '.glazing_slider',
+    tabsSelector: '.glazing_block a',
+    tabsContentSelector: '.glazing_content',
+    activeClass: "active"
+  });
+  var decorationTabs = Object(_modules_tabs__WEBPACK_IMPORTED_MODULE_1__["tabs"])({
+    header: '.decoration_slider',
+    tabsSelector: '.no_click a',
+    tabsContentSelector: '.decoration_content > div > div',
+    activeClass: "after_click"
+  });
 });
 
 /***/ }),
 
-/***/ "./src/js/modules/popup.js":
+/***/ "./src/js/modules/modal.js":
 /*!*********************************!*\
-  !*** ./src/js/modules/popup.js ***!
+  !*** ./src/js/modules/modal.js ***!
   \*********************************/
 /*! exports provided: modal */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -14905,6 +14919,70 @@ var modal = function modal() {
   initModal('.popup_engineer', '.popup_engineer_btn', '.popup_engineer .popup_close');
   initModal('.popup', '.phone_link', '.popup .popup_close');
   openModalByTime('.popup', 60000);
+};
+
+/***/ }),
+
+/***/ "./src/js/modules/tabs.js":
+/*!********************************!*\
+  !*** ./src/js/modules/tabs.js ***!
+  \********************************/
+/*! exports provided: tabs */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "tabs", function() { return tabs; });
+/* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/web.dom-collections.for-each */ "./node_modules/core-js/modules/web.dom-collections.for-each.js");
+/* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_0__);
+
+var tabs = function tabs(options) {
+  var header = document.querySelector(options.header);
+  var tab = document.querySelectorAll(options.tabsSelector);
+  var content = document.querySelectorAll(options.tabsContentSelector);
+
+  function hideTabsContent() {
+    tab.forEach(function (item) {
+      return item.classList.remove(options.activeClass);
+    });
+    tab.forEach(function (item) {
+      return item.parentNode.classList.remove(options.activeClass);
+    });
+    content.forEach(function (item) {
+      return item.style.display = 'none';
+    });
+  }
+
+  function showTabsContant() {
+    var i = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+    tab[i].classList.add(options.activeClass);
+    tab[i].parentNode.classList.add(options.activeClass);
+    content[i].style.display = 'block';
+  }
+
+  hideTabsContent();
+  showTabsContant();
+  header.addEventListener('click', function (e) {
+    var target = e.target; // if (target &&
+    //     (target.classList.contains(options.tabsSelector.replace(/\./, '')) ||
+    //         target.parentNode.classList.contains(options.tabsSelector.replace(/\./, '')))) {
+    //     tab.forEach((item, i) => {
+    //         if (target == item || target.parentNode == item) {
+    //             hideTabsContent();
+    //             showTabsContant(i);
+    //         }
+    //     });
+    // }
+
+    if (target) {
+      tab.forEach(function (item, i) {
+        if (target == item) {
+          hideTabsContent();
+          showTabsContant(i);
+        }
+      });
+    }
+  });
 };
 
 /***/ }),
