@@ -5,6 +5,7 @@ export const modal = () => {
         const modal = document.querySelector(modalSelector);
         const closeBtn = document.querySelector(modalCloseBtn);
         const windows = document.querySelectorAll('[data-modal]');
+        const scroll = calcScroll();
 
         openBtn.forEach(el => {
             el.addEventListener('click', (e) => {
@@ -16,6 +17,8 @@ export const modal = () => {
 
                 modal.style.display = 'block';
                 document.body.style.overflow = 'hidden';
+
+                document.body.style.marginRight = `${scroll}px`;
             });
         });
 
@@ -23,6 +26,8 @@ export const modal = () => {
             modal.style.display = 'none';
             document.body.style.overflow = '';
             windows.forEach(window => window.style.display = 'none');
+
+            document.body.style.marginRight = `0px`;
         };
 
         closeBtn.addEventListener('click', (e) => {
@@ -34,6 +39,8 @@ export const modal = () => {
                 modal.style.display = 'none';
                 document.body.style.overflow = '';
                 windows.forEach(window => window.style.display = 'none');
+
+                document.body.style.marginRight = `0px`;
             }
         });
     }
@@ -45,6 +52,23 @@ export const modal = () => {
             modal.style.display = 'block';
             document.body.style.overflow = 'hidden';
         }, time);
+    }
+
+    function calcScroll() {
+        let div = document.createElement('div');
+
+        div.style.width = '50px';
+        div.style.height = '50px';
+        div.style.overflowY = 'scroll';
+        div.style.visibility = 'hidden';
+
+        document.body.appendChild(div);
+
+        let scrollWidth = div.offsetWidth - div.clientWidth;
+
+        div.remove();
+
+        return scrollWidth;
     }
 
     initModal('.popup_engineer', '.popup_engineer_btn', '.popup_engineer .popup_close');

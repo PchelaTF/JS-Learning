@@ -29,7 +29,7 @@ window.addEventListener('DOMContentLoaded', () => {
     });
 
     forms(modalState);
-
+guk
     const calcTabs = tabs({
         header: '.balcon_icons',
         tabsSelector: '.balcon_icons_img img',
