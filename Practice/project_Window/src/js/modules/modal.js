@@ -19,10 +19,14 @@ export const modal = () => {
             });
         });
 
-        closeBtn.addEventListener('click', (e) => {
+        const closeModal = function () {
             modal.style.display = 'none';
             document.body.style.overflow = '';
             windows.forEach(window => window.style.display = 'none');
+        };
+
+        closeBtn.addEventListener('click', (e) => {
+            closeModal();
         });
 
         modal.addEventListener('click', (e) => {

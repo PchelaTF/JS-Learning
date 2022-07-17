@@ -1,9 +1,11 @@
+import { cnangeModalState } from "./modules/changeModalState";
 import { forms } from "./modules/forms";
 import { modal } from "./modules/modal";
 import { tabs } from "./modules/tabs";
 import "./slider";
 
 window.addEventListener('DOMContentLoaded', () => {
+    let modalState = {};
 
     modal();
 
@@ -23,7 +25,7 @@ window.addEventListener('DOMContentLoaded', () => {
         display: "block"
     });
 
-    forms();
+    forms(modalState);
 
     const calcTabs = tabs({
         header: '.balcon_icons',
@@ -32,4 +34,6 @@ window.addEventListener('DOMContentLoaded', () => {
         activeClass: "do_image_more",
         display: "inline-block"
     });
+
+    cnangeModalState(modalState);
 }); 
