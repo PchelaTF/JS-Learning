@@ -1,5 +1,6 @@
 import { cnangeModalState } from "./modules/changeModalState";
 import { forms } from "./modules/forms";
+import { images } from "./modules/images";
 import { modal } from "./modules/modal";
 import { tabs } from "./modules/tabs";
 import { timer } from "./modules/timer";
@@ -40,4 +41,6 @@ window.addEventListener('DOMContentLoaded', () => {
     cnangeModalState(modalState);
 
     timer('.container1', deadline);
+
+    images();
 }); 
