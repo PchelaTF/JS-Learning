@@ -2,10 +2,12 @@ import { cnangeModalState } from "./modules/changeModalState";
 import { forms } from "./modules/forms";
 import { modal } from "./modules/modal";
 import { tabs } from "./modules/tabs";
+import { timer } from "./modules/timer";
 import "./slider";
 
 window.addEventListener('DOMContentLoaded', () => {
     let modalState = {};
+    let deadline = '2022-10-01';
 
     modal();
 
@@ -36,4 +38,6 @@ window.addEventListener('DOMContentLoaded', () => {
     });
 
     cnangeModalState(modalState);
+
+    timer('.container1', deadline);
 }); 
